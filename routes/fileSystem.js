@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const template = require("../modules/template.js");
-const upload = require("../modules/uploadFS.js");
+const uploadFS = require("../modules/uploadFS.js");
 const fs = require("fs");
 const path = require("path");
 const mime = require("mime");
@@ -33,8 +33,8 @@ router.all("/list", (req, res, next) => {
     res.send(template.HTML(data));
 });
 
-router.all("/uploadFile", upload.single("file"), (req, res, next) => {
-    console.log(req.file);
+router.all("/uploadFile", uploadFS.single("file"), (req, res, next) => {
+    console.log("uploadfile FS",req.file.originalname);
     res.redirect("/fs/list");
 });
 
