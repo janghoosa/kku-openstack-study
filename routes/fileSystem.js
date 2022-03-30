@@ -28,8 +28,10 @@ router.all("/list", (req, res, next) => {
     <br>
     <br>
     `;
-    let files = fs.readdirSync("./files");
-    files.forEach(item => data = data + '<a href="/fs/download/' + item + '">'+item+'</a><br>');
+    if (fs.existsSync("./files")) {
+        let files = fs.readdirSync("./files");
+        files.forEach(item => data = data + '<a href="/fs/download/' + item + '">'+item+'</a><br>');
+    }
     res.send(template.HTML(data));
 });
 
