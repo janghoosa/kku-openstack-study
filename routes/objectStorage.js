@@ -131,4 +131,11 @@ router.all("/uploadFile", uploadOS.single("file"), (req, res, next) => {
     putObjectToToast(req, res, next);
 });
 
+router.all("/download/:path/:file", (req, res, next) => {
+    let path = req.params.path;
+    let file = req.params.file;
+    let url = endpoint + containerName +'/' + path +'/' + file;
+    res.redirect(url);
+})
+
 module.exports = router;
