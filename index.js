@@ -16,7 +16,7 @@ const rds = require("./routes/rds.js");
 app.use("/os", objectStorage);
 app.use("/fs", fileSystem);
 app.use("/cdn", cdn);
-app.use("rds", rds);
+app.use("/rds", rds);
 
 app.get("/", (req, res, next) => {
     let data = `
